@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
+import com.alasdoo.developercourseassignment.dto.TeacherDTO;
+import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.mapper.TeacherMapper;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
@@ -53,9 +55,19 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
-		return null;
-	}
+    public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
+        Optional<Teacher> oldTeacher = teacherRepository.findById(id);
+        if (!oldTeacher.isPresent()) {
+            throw new IllegalArgumentException
+                ("Teacher with the following id = " + id + " is not found.");
+        }
+        oldTeacher.get().setTeacherName(teacherDTO.getTeacherName());
+        oldTeacher.get().setTeacherSurname(teacherDTO.getTeacherSurname());
+        oldTeacher.get().setTeacherEmail(teacherDTO.getTeacherEmail());
+        teacherRepository.save(oldTeacher.get());
+
+        return teacherMapper.transformToDTO(oldTeacher.get());
+    }
 
 	public TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) {
 		return null;
