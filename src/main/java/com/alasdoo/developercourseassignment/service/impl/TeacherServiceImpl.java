@@ -45,6 +45,11 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public void remove(Integer id) throws IllegalArgumentException {
+		Optional<Teacher> teacher = teacherRepository.findById(id);
+		if (!teacher.isPresent()) {
+			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
+		}
+		teacherRepository.deleteById(id);
 	}
 
 	@Override
