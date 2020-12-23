@@ -1,11 +1,13 @@
 package com.alasdoo.developercourseassignment.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
+import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.mapper.TeacherMapper;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
@@ -22,7 +24,12 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public TeacherDTO findOne(Integer id) {
-		return null;
+        Optional<Teacher> teacher = teacherRepository.findById(id);
+        if (!teacher.isPresent()) {
+            throw new IllegalArgumentException
+                ("Teacher with the following id = " + id + " is not found.");
+        }
+        return teacherMapper.transformToDTO(teacher.get());
 	}
 
 	@Override
