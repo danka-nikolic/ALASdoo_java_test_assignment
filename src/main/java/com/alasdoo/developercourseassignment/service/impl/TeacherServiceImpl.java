@@ -77,7 +77,13 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherMapper.transformToDTO(teacher.get());
 	}
 
+	@Override
 	public TeacherDTO findByTeacherEmail(String email) {
-		return null;
+		Optional<Teacher> teacher = teacherRepository.findByTeacherEmail(email);
+		if (!teacher.isPresent()) {
+			throw new IllegalArgumentException(
+					"Teacher with the following email = " + email + " is not found.");
+		}
+		return teacherMapper.transformToDTO(teacher.get());
 	}
 }
