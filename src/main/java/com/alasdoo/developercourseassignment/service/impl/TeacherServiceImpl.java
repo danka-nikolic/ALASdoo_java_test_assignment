@@ -2,12 +2,12 @@ package com.alasdoo.developercourseassignment.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
-import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.mapper.TeacherMapper;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
@@ -34,7 +34,7 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public List<TeacherDTO> findAll() {
-		return null;
+		return teacherRepository.findAll().stream().map(i -> teacherMapper.transformToDTO(i)).collect(Collectors.toList());
 	}
 
 	@Override
