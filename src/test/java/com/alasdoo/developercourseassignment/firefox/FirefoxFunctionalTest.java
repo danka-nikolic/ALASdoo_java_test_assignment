@@ -1,12 +1,17 @@
 package com.alasdoo.developercourseassignment.firefox;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class FirefoxFunctionalTest {
@@ -38,6 +43,17 @@ public class FirefoxFunctionalTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	void checkButtonNameOnSettingsPage() {
+		driver.get("http://localhost:3000/settings");
+		
+		List<WebElement> elements = driver.findElements(By.tagName("button"));
+
+		WebElement startButton = elements.get(0);
+		
+		assertEquals("START", startButton.getText());
 	}
 
 }
