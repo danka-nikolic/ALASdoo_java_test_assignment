@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -19,9 +20,17 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 @ExtendWith(FunctionalTest.class)
 public class FunctionalTest implements TestWatcher {
@@ -75,27 +84,52 @@ public class FunctionalTest implements TestWatcher {
 				configureMozillaFirefoxBrowser();
 				break;
 		}
+
+		((RemoteWebDriver) driver).setLogLevel(Level.INFO);
 	}
 
 	private static void configureMozillaFirefoxBrowser() {
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
-		driver = new FirefoxDriver();
+		
+		FirefoxOptions options = new FirefoxOptions();
+		options.setCapability(CapabilityType.LOGGING_PREFS, getLoggingPreferences());
+
+		driver = new FirefoxDriver(options);
 	}
 
 	private static void configureGoogleChromeBrowser() {
 		// for Chrome version  87.0.4280.88
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-		driver = new ChromeDriver();
+		
+		ChromeOptions options = new ChromeOptions();
+		options.setCapability(CapabilityType.LOGGING_PREFS, getLoggingPreferences());
+		
+		driver = new ChromeDriver(options);
 	}
 
 	private static void configureInternetExplorerBrowser() {
 		System.setProperty("webdriver.ie.driver", "src/test/resources/IEDriverServer.exe");
-		driver = new InternetExplorerDriver();
+
+		InternetExplorerOptions options = new InternetExplorerOptions();
+        options.setCapability(CapabilityType.LOGGING_PREFS, getLoggingPreferences());
+
+		driver = new InternetExplorerDriver(options);
 	}
 
 	private static void configureMicrosoftEdgeBrowser() {
 		System.setProperty("webdriver.edge.driver", "src/test/resources/msedgedriver.exe");
-		driver = new EdgeDriver();
+
+		EdgeOptions options = new EdgeOptions();
+        options.setCapability(CapabilityType.LOGGING_PREFS, getLoggingPreferences());
+
+		driver = new EdgeDriver(options);
+	}
+	
+	private static LoggingPreferences getLoggingPreferences() {
+		LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+
+        return logPrefs;
 	}
 	
 	private void captureScreenshot(String fileName) {
