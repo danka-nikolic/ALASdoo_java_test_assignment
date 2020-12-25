@@ -36,25 +36,29 @@ public class FunctionalTest {
 	}
 
 	private static void setupBrowser() throws IOException {
-		try(InputStream is = FunctionalTest.class.getClassLoader().getResourceAsStream("tests_config.properties")) {
-			Properties prop = new Properties();
-	        prop.load(is);
-	        String browser = prop.getProperty("BROWSER");
+		String browser = System.getProperty("BROWSER_TYPE");
 
-	        switch (browser) {
-				case "chrome":
-					configureGoogleChromeBrowser();
-					break;
-				case "edge":
-					configureMicrosoftEdgeBrowser();
-					break;
-				case "explorer":
-					configureInternetExplorerBrowser();
-					break;
-				default:
-					configureMozillaFirefoxBrowser();
-					break;
+		if (browser == null || browser.isEmpty()) {
+			try(InputStream is = FunctionalTest.class.getClassLoader().getResourceAsStream("tests_config.properties")) {
+				Properties prop = new Properties();
+		        prop.load(is);
+		        browser = prop.getProperty("BROWSER");
 			}
+		}
+		
+		switch (browser) {
+			case "chrome":
+				configureGoogleChromeBrowser();
+				break;
+			case "edge":
+				configureMicrosoftEdgeBrowser();
+				break;
+			case "explorer":
+				configureInternetExplorerBrowser();
+				break;
+			default:
+				configureMozillaFirefoxBrowser();
+				break;
 		}
 	}
 
