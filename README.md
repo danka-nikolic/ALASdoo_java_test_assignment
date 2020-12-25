@@ -6,5 +6,9 @@
 2. To start the backend run `mvnw spring-boot:run` command (control + c will kill the application)
 3. Build the frontend: `cd src/frontend`, `yarn`. (install `yarn` and `node` if needed)
 4. To start the frontend go to `src/frontend` and run `yarn start`. It will run on `localhost:3000`.
-5. Webdrivers can be downloaded from [download webdrivers](https://www.selenium.dev/ecosystem/)
+
+## How to run the tests
+1. Webdrivers can be downloaded from [download webdrivers](https://www.selenium.dev/ecosystem/)
 while Internet Explorer webdriver can be downloaded from [explorer webdriver](https://www.selenium.dev/downloads/)
+(By default, all the drivers are located in `src/test/resources` folder)
+2. Browser selection can be adjusted by changing the file `src/test/resources/tests_config.properties`, by changing the value for key `BROWSER` to `chrome` (Google Chrome), `edge` (Microsoft Edge), `explorer` (Internet Explorer), `firefox` (Mozilla Firefox). The default value is `firefox`. 
