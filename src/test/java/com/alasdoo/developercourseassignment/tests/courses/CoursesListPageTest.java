@@ -1,4 +1,4 @@
-package com.alasdoo.developercourseassignment.tests;
+package com.alasdoo.developercourseassignment.tests.courses;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import com.alasdoo.developercourseassignment.dto.DeveloperCourseDTO;
 import com.alasdoo.developercourseassignment.pages.courses.CoursesListPage;
+import com.alasdoo.developercourseassignment.tests.FunctionalTest;
 
 public class CoursesListPageTest extends FunctionalTest {
 	

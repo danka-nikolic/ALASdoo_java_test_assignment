@@ -1,10 +1,11 @@
-package com.alasdoo.developercourseassignment.tests;
+package com.alasdoo.developercourseassignment.tests.settings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 import com.alasdoo.developercourseassignment.pages.settings.SettingsPage;
+import com.alasdoo.developercourseassignment.tests.FunctionalTest;
 
 public class SettingsPageTest extends FunctionalTest {
 	
