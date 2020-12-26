@@ -8,28 +8,53 @@ import com.alasdoo.developercourseassignment.pages.PageObject;
 
 public class StudentEditPage extends PageObject {
 	
-	@FindBy(name = "name")
+	@FindBy(xpath = "//*[@id=\"formik-text-field-2\"]")
     private WebElement name;
 
-	@FindBy(name = "surname")
+	@FindBy(xpath = "//*[@id=\"formik-text-field-4\"]")
     private WebElement surname;
 
-	@FindBy(name = "accountName")
+	@FindBy(xpath = "//*[@id=\"formik-text-field-6\"]")
     private WebElement accountName;
 
-	@FindBy(name = "email")
+	@FindBy(xpath = "//*[@id=\"formik-text-field-8\"]")
     private WebElement email;
 
-	@FindBy(name = "bankCardNumber")
+	@FindBy(xpath = "//*[@id=\"formik-text-field-10\"]")
     private WebElement bankCardNumber;
 
-	@FindBy(name = "SubmitButton")
+	@FindBy(xpath = "//*[@id=\"root\"]/div/main/div[2]/div[2]/form/div[7]/button[1]")
     private WebElement submitButton;
 
-	@FindBy(name = "Button")
+	@FindBy(xpath = "//*[@id=\"root\"]/div/main/div[2]/div[2]/form/div[7]/button[2]")
     private WebElement deleteButton;
 
 	public StudentEditPage(WebDriver driver) {
 		super(driver);
 	}
+
+	public void changeName(String studentName) {
+		name.clear();
+
+		name.sendKeys(studentName);
+	}
+
+	public void changeSurname(String studentSurname) {
+		surname.clear();
+
+		surname.sendKeys(studentSurname);
+	}
+
+	public StudentsListPage clickSubmitButton() {
+		submitButton.click();
+
+		return new StudentsListPage(driver);
+	}
+
+	public StudentsListPage clickDeleteButton() {
+		deleteButton.click();
+
+		return new StudentsListPage(driver);
+	}
+	
 }
