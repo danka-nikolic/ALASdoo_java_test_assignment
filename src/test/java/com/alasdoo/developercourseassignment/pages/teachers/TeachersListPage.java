@@ -55,9 +55,9 @@ public class TeachersListPage extends PageObject {
 		
 		TeacherDTO teacher = null;
 
-		for (TeacherDTO s : teachers) {
-			if (s.getId().equals(id)) {
-				teacher = s;
+		for (TeacherDTO t : teachers) {
+			if (t.getId().equals(id)) {
+				teacher = t;
 				break;
 			}
 		}
@@ -65,4 +65,18 @@ public class TeachersListPage extends PageObject {
 		return teacher;
 	}
 
+	public TeacherDTO findTeacherByEmail(String email) {
+		List<TeacherDTO> teachers = readTeachersFromTable();
+		
+		TeacherDTO teacher = null;
+
+		for (TeacherDTO t : teachers) {
+			if (t.getTeacherEmail().equals(email)) {
+				teacher = t;
+				break;
+			}
+		}
+		
+		return teacher;
+	}
 }

@@ -1,6 +1,7 @@
 package com.alasdoo.developercourseassignment.tests.teachers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
@@ -41,9 +42,10 @@ public class TeacherListPageTest extends FunctionalTest {
 		int numberOfTeachersOnPage = 10;
 		assertEquals(numberOfTeachersOnPage, teachers.size());
 		
-		assertEquals("Nadine", teacherListPage.findTeacherById(8).getTeacherName());
-
-		assertEquals("Burns", teacherListPage.findTeacherById(7).getTeacherSurname());
+		TeacherDTO teacher = teacherListPage.findTeacherByEmail("justo@tinciduntadipiscingMauris.org");
+		if (teacher != null) {
+			assertEquals("Floyd", teacher.getTeacherSurname());
+		}
 
 		sleep(3000);
 	}

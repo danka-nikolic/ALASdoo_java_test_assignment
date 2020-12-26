@@ -67,6 +67,21 @@ public class CoursesListPage extends PageObject {
 		return course;
 	}
 
+	public DeveloperCourseDTO findCourseByName(String name) {
+		List<DeveloperCourseDTO> courses = readCoursesFromTable();
+		
+		DeveloperCourseDTO course = null;
+
+		for (DeveloperCourseDTO dc : courses) {
+			if (dc.getDeveloperCourseName().equals(name)) {
+				course = dc;
+				break;
+			}
+		}
+		
+		return course;
+	}
+
 	private Integer readCostPerClass(String sCost) {
 		String[] splited = sCost.split("\\s+");
 		Double dCost = Double.valueOf(splited[0].replace(",", "."));

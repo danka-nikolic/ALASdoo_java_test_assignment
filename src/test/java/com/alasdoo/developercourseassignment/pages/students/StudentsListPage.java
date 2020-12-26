@@ -67,4 +67,19 @@ public class StudentsListPage extends PageObject {
 		return student;
 	}
 
+	public StudentDTO findStudentByEmail(String email) {
+		List<StudentDTO> students = readStudentsFromTable();
+		
+		StudentDTO student = null;
+
+		for (StudentDTO s : students) {
+			if (s.getEmail().equals(email)) {
+				student = s;
+				break;
+			}
+		}
+		
+		return student;
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.alasdoo.developercourseassignment.tests.students;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.alasdoo.developercourseassignment.dto.StudentDTO;
+import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.pages.students.StudentsListPage;
 import com.alasdoo.developercourseassignment.tests.FunctionalTest;
 
@@ -42,10 +44,16 @@ public class StudentsListPageTest extends FunctionalTest {
 
 		int numberOfStudentsOnPage = 10;
 		assertEquals(numberOfStudentsOnPage, students.size());
-		
-		assertEquals("Grace", studentListPage.findStudentById(10).getName());
 
-		assertEquals("Walton", studentListPage.findStudentById(9).getSurname());
+		StudentDTO student1 = studentListPage.findStudentByEmail("senectus@egestas.net");
+		if (student1 != null) {
+			assertEquals("Hamilton", student1.getName());
+		}
+
+		StudentDTO student2 = studentListPage.findStudentByEmail("elit.pede@necleoMorbi.net");
+		if (student2 != null) {
+			assertEquals("Kramer", student2.getName());
+		}
 
 		sleep(3000);
 	}
