@@ -51,5 +51,20 @@ public class StudentsListPage extends PageObject {
 		
 		return students;
 	}
+	
+	public StudentDTO findStudentById(Integer id) {
+		List<StudentDTO> students = readStudentsFromTable();
+		
+		StudentDTO student = null;
+
+		for (StudentDTO s : students) {
+			if (s.getId().equals(id)) {
+				student = s;
+				break;
+			}
+		}
+		
+		return student;
+	}
 
 }
