@@ -1,4 +1,4 @@
-package com.alasdoo.developercourseassignment.pages;
+package com.alasdoo.developercourseassignment.pages.courses;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.alasdoo.developercourseassignment.dto.DeveloperCourseDTO ;
+import com.alasdoo.developercourseassignment.pages.PageObject;
 
 public class CoursesListPage extends PageObject {
 	

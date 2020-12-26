@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.alasdoo.developercourseassignment.dto.StudentDTO;
-import com.alasdoo.developercourseassignment.pages.StudentsListPage;
+import com.alasdoo.developercourseassignment.pages.students.StudentsListPage;
 
 public class StudentsListPageTest extends FunctionalTest {
 	

@@ -1,8 +1,10 @@
-package com.alasdoo.developercourseassignment.pages;
+package com.alasdoo.developercourseassignment.pages.settings;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import com.alasdoo.developercourseassignment.pages.PageObject;
 
 public class SettingsPage extends PageObject {
 	

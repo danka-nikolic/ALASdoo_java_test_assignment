@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.alasdoo.developercourseassignment.pages.SettingsPage;
+import com.alasdoo.developercourseassignment.pages.settings.SettingsPage;
 
 public class SettingsPageTest extends FunctionalTest {
 	
