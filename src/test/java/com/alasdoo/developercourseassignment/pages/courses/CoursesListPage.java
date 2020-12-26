@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.alasdoo.developercourseassignment.dto.DeveloperCourseDTO ;
+import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.pages.PageObject;
 
 public class CoursesListPage extends PageObject {
@@ -50,6 +51,21 @@ public class CoursesListPage extends PageObject {
 		
 		return courses;
 	}
+	
+	public DeveloperCourseDTO findCourseById(Integer id) {
+		List<DeveloperCourseDTO> courses = readCoursesFromTable();
+		
+		DeveloperCourseDTO course = null;
+
+		for (DeveloperCourseDTO dc : courses) {
+			if (dc.getId().equals(id)) {
+				course = dc;
+				break;
+			}
+		}
+		
+		return course;
+	}
 
 	private Integer readCostPerClass(String sCost) {
 		String[] splited = sCost.split("\\s+");
@@ -57,5 +73,5 @@ public class CoursesListPage extends PageObject {
 
 		return dCost.intValue();
 	}
-
+	
 }
