@@ -12,4 +12,5 @@
 while Internet Explorer webdriver can be downloaded from [explorer webdriver](https://www.selenium.dev/downloads/)
 (By default, all the drivers are located in `src/test/resources` folder)
 2. Browser selection can be adjusted by passing system argument `BROWSER_TYPE={type}`, or changing the file `src/test/resources/tests_config.properties`, by changing the value for key `BROWSER` to {type} = `chrome` (Google Chrome), or `edge` (Microsoft Edge), or `explorer` (Internet Explorer), or `firefox` (Mozilla Firefox). The default value is  `firefox`. 
-3. Tests can be run from command line `mvnw test -D BROWSER_TYPE={type}` (e.g. `mvnw test -D BROWSER_TYPE=firefox`)
+3. Tests can be run from command line. First run `mvnw clean compile -DskipTests`
+Then run `mvnw test -D BROWSER_TYPE={type}` (e.g. `mvnw test -D BROWSER_TYPE=firefox`)
