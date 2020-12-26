@@ -94,8 +94,13 @@ public class FunctionalTest implements TestWatcher {
 	}
 
 	private static void configureMozillaFirefoxBrowser() {
-		System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
-		
+		String firefoxDriverPath="src/test/resources/geckodriver";
+		if(System.getProperty("os.name").toLowerCase().contains("win")) {
+			firefoxDriverPath+=".exe";
+		}
+
+		System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
+
 		FirefoxOptions options = new FirefoxOptions();
 		options.setCapability(CapabilityType.LOGGING_PREFS, getLoggingPreferences());
 
@@ -104,7 +109,12 @@ public class FunctionalTest implements TestWatcher {
 
 	private static void configureGoogleChromeBrowser() {
 		// for Chrome version  87.0.4280.88
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+		String chromeDriverPath="src/test/resources/chromedriver";
+		if(System.getProperty("os.name").toLowerCase().contains("win")) {
+			chromeDriverPath+=".exe";
+		}
+		   
+		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		
 		ChromeOptions options = new ChromeOptions();
 		options.setCapability(CapabilityType.LOGGING_PREFS, getLoggingPreferences());
