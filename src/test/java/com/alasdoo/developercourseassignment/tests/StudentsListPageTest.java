@@ -15,6 +15,7 @@ public class StudentsListPageTest extends FunctionalTest {
 	@Test
 	public void checkHeaderNames() {
 		driver.get("http://localhost:3000/student");
+		logger.info("### BROWSER URL: " + driver.getCurrentUrl());
 
 		StudentsListPage studentListPage = new StudentsListPage(driver);
 		
@@ -30,6 +31,7 @@ public class StudentsListPageTest extends FunctionalTest {
 	@Test
 	public void checkTableElements() {
 		driver.get("http://localhost:3000/student");
+		logger.info("### BROWSER URL: " + driver.getCurrentUrl());
 
 		StudentsListPage studentListPage = new StudentsListPage(driver);
 		

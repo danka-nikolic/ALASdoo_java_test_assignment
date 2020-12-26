@@ -11,6 +11,7 @@ public class SettingsPageTest extends FunctionalTest {
     @Test
     public void checkElementsText() {
         driver.get("http://localhost:3000/settings");
+        logger.info("### BROWSER URL: " + driver.getCurrentUrl());
 
         SettingsPage settingsPage = new SettingsPage(driver);
         
