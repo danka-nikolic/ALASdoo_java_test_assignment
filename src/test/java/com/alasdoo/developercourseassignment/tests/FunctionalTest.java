@@ -52,6 +52,8 @@ public class FunctionalTest implements TestWatcher {
 	public static void setUp() throws IOException {
 		setupBrowser();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// Maximize browser window
+		driver.manage().window().maximize();
 	}
 
 	@AfterEach
