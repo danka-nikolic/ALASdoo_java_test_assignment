@@ -43,9 +43,9 @@ public class StudentsListPageTest extends FunctionalTest {
 		int numberOfStudentsOnPage = 10;
 		assertEquals(numberOfStudentsOnPage, students.size());
 		
-		assertEquals("Barrett", students.get(1).getName());
+		assertEquals("Grace", studentListPage.findStudentById(10).getName());
 
-		assertEquals("Whitaker", students.get(5).getSurname());
+		assertEquals("Walton", studentListPage.findStudentById(9).getSurname());
 
 		sleep(3000);
 	}

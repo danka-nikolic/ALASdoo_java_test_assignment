@@ -41,9 +41,9 @@ public class TeacherListPageTest extends FunctionalTest {
 		int numberOfTeachersOnPage = 10;
 		assertEquals(numberOfTeachersOnPage, teachers.size());
 		
-		assertEquals("Linda", teachers.get(3).getTeacherName());
+		assertEquals("Nadine", teacherListPage.findTeacherById(8).getTeacherName());
 
-		assertEquals("Daniels", teachers.get(8).getTeacherSurname());
+		assertEquals("Burns", teacherListPage.findTeacherById(7).getTeacherSurname());
 
 		sleep(3000);
 	}

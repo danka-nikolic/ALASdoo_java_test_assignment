@@ -42,9 +42,9 @@ public class CoursesListPageTest extends FunctionalTest {
 		int numberOfCoursesOnPage = 10;
 		assertEquals(numberOfCoursesOnPage, courses.size());
 
-		assertEquals("Mauris eu turpis.", courses.get(0).getDeveloperCourseName());
+		assertEquals("Mauris eu turpis.", courseListPage.findCourseById(2).getDeveloperCourseName());
 
-		assertEquals(75, courses.get(2).getCostPerClass());
+		assertEquals(75, courseListPage.findCourseById(3).getCostPerClass());
 
 		sleep(3000);
 	}
