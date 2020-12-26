@@ -50,4 +50,19 @@ public class TeachersListPage extends PageObject {
 		return teachers;
 	}
 
+	public TeacherDTO findTeacherById(Integer id) {
+		List<TeacherDTO> teachers = readTeachersFromTable();
+		
+		TeacherDTO teacher = null;
+
+		for (TeacherDTO s : teachers) {
+			if (s.getId().equals(id)) {
+				teacher = s;
+				break;
+			}
+		}
+		
+		return teacher;
+	}
+
 }
