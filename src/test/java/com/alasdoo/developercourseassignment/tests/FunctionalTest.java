@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
 public class FunctionalTest implements TestWatcher {
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	protected final String APP_BASE_URL = "http://localhost:3000";
 	protected static WebDriver driver;
 
 	@BeforeAll
