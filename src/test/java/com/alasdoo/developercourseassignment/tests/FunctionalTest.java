@@ -10,7 +10,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
-import org.checkerframework.common.reflection.qual.GetClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -35,10 +34,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Root class for all ent to enn tests
+ * @author Danka
+ *
+ */
+// This needs to be configured to catch failed tests
 @ExtendWith(FunctionalTest.class)
 public class FunctionalTest implements TestWatcher {
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	// App url
 	protected final String APP_BASE_URL = "http://localhost:3000";
 	protected static WebDriver driver;
 
@@ -65,8 +71,10 @@ public class FunctionalTest implements TestWatcher {
     }
 
 	private static void setupBrowser() throws IOException {
+		// First read browser from system argument
 		String browser = System.getProperty("BROWSER_TYPE");
 
+		// if browser type is not specified via system argument, then read configuration from src/test/resources/tests_config.properties
 		if (browser == null || browser.isEmpty()) {
 			try(InputStream is = FunctionalTest.class.getClassLoader().getResourceAsStream("tests_config.properties")) {
 				Properties prop = new Properties();
@@ -93,6 +101,9 @@ public class FunctionalTest implements TestWatcher {
 		((RemoteWebDriver) driver).setLogLevel(Level.INFO);
 	}
 
+	/**
+	 * Configures Mozilla Firefox browser
+	 */
 	private static void configureMozillaFirefoxBrowser() {
 		String firefoxDriverPath="src/test/resources/geckodriver";
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -107,6 +118,9 @@ public class FunctionalTest implements TestWatcher {
 		driver = new FirefoxDriver(options);
 	}
 
+	/**
+	 * Configures Google Chrome browser
+	 */
 	private static void configureGoogleChromeBrowser() {
 		// for Chrome version  87.0.4280.88
 		String chromeDriverPath="src/test/resources/chromedriver";
@@ -122,6 +136,9 @@ public class FunctionalTest implements TestWatcher {
 		driver = new ChromeDriver(options);
 	}
 
+	/**
+	 * Configures Internet Explorer browser
+	 */
 	private static void configureInternetExplorerBrowser() {
 		System.setProperty("webdriver.ie.driver", "src/test/resources/IEDriverServer.exe");
 
@@ -131,6 +148,9 @@ public class FunctionalTest implements TestWatcher {
 		driver = new InternetExplorerDriver(options);
 	}
 
+	/**
+	 * Configures Microsoft Edge browser
+	 */
 	private static void configureMicrosoftEdgeBrowser() {
 		System.setProperty("webdriver.edge.driver", "src/test/resources/msedgedriver.exe");
 
@@ -146,7 +166,12 @@ public class FunctionalTest implements TestWatcher {
 
         return logPrefs;
 	}
-	
+
+	/**
+	 * Captures screenshot if test fails, and saves it to src/test/resources/screenshots 
+	 * E.g. If failed method is name dummyTest() then image name will be dummyTest_HH_mm_ss.png where HH_mm_ss represents current hours, minutes, and seconds
+	 * @param fileName
+	 */
 	private void captureScreenshot(String fileName) {
         try {
         	LocalTime time = LocalTime.now();
@@ -162,6 +187,11 @@ public class FunctionalTest implements TestWatcher {
         }
     }
 
+	/**
+	 * Sleeps in millis
+	 * This method can be used to slow down tests.
+	 * @param millis
+	 */
 	protected void sleep(int millis) {
 		try {
 			Thread.sleep(millis);

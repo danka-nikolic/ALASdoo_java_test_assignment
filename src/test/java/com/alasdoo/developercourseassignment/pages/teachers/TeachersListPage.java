@@ -30,7 +30,11 @@ public class TeachersListPage extends PageObject {
 	public WebElement getTableContent() {
 		return tableContent;
 	}
-	
+
+	/**
+	 * Read all students from GUI table and convert them to list of dtos
+	 * @return List<TeacherDTO>
+	 */
 	public List<TeacherDTO> readTeachersFromTable() {
 		List<TeacherDTO> teachers = new ArrayList<>();
 

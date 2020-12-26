@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.alasdoo.developercourseassignment.pages.PageObject;
 
+// Encapsulates /settings page
 public class SettingsPage extends PageObject {
 	
 	@FindBy(tagName = "p")
@@ -26,6 +27,9 @@ public class SettingsPage extends PageObject {
 		return startButton.getText();
 	}
 	
+	/**
+	 * Method which clicks start button on settings page
+	 */
 	public void clickStartButton() {
 		startButton.click();
 	}
