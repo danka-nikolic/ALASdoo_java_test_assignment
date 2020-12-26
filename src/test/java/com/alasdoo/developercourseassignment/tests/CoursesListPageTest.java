@@ -25,6 +25,8 @@ public class CoursesListPageTest extends FunctionalTest {
 		assertEquals("Course name", headerElements.get(1).getText());
 		assertEquals("Cost per class", headerElements.get(2).getText());
 		assertEquals("Classes per week", headerElements.get(3).getText());
+
+		sleep(3000);
 	}
 
 	@Test
@@ -42,6 +44,8 @@ public class CoursesListPageTest extends FunctionalTest {
 		assertEquals("Mauris eu turpis.", courses.get(0).getDeveloperCourseName());
 
 		assertEquals(75, courses.get(2).getCostPerClass());
+
+		sleep(3000);
 	}
 
 }

@@ -161,4 +161,12 @@ public class FunctionalTest implements TestWatcher {
             e.printStackTrace();
         }
     }
+
+	protected void sleep(int millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

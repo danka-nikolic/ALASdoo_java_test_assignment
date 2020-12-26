@@ -24,6 +24,8 @@ public class TeacherListPageTest extends FunctionalTest {
 		assertEquals("ID", headerElements.get(0).getText());
 		assertEquals("Name", headerElements.get(1).getText());
 		assertEquals("Surname", headerElements.get(2).getText());
+
+		sleep(3000);
 	}
 
 	@Test
@@ -41,6 +43,8 @@ public class TeacherListPageTest extends FunctionalTest {
 		assertEquals("Linda", teachers.get(3).getTeacherName());
 
 		assertEquals("Daniels", teachers.get(8).getTeacherSurname());
+
+		sleep(3000);
 	}
 
 }

@@ -18,6 +18,8 @@ public class SettingsPageTest extends FunctionalTest {
         assertEquals("Inject demo content in the backend. Run this command only once!", settingsPage.getDescriptionElementText());
         
         assertEquals("START", settingsPage.getStartButtonText());
+
+        sleep(3000);
     }
 	
 }
