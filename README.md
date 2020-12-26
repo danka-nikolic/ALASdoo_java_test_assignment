@@ -7,7 +7,14 @@
 3. Build the frontend: `cd src/frontend`, `yarn`. (install `yarn` and `node` if needed)
 4. To start the frontend go to `src/frontend` and run `yarn start`. It will run on `localhost:3000`.
 
+## Prerequirements for running tests
+
+1. Backend application has been started
+2. Frontend application has been started
+3. On [/settings](http://localhost:3000/settings) page, `START` button has been pressed
+
 ## How to run the tests
+
 1. Webdrivers can be downloaded from [download webdrivers](https://www.selenium.dev/ecosystem/)
 while Internet Explorer webdriver can be downloaded from [explorer webdriver](https://www.selenium.dev/downloads/)
 (By default, all the drivers are located in `src/test/resources` folder)
